@@ -53,13 +53,13 @@ test('edits an existing message', async () => {
 
   // Ensure inputs are updated with the selected message details
   await waitFor(() => {
-    expect(screen.getByDisplayValue('Message 1')).toBeInTheDocument();
-    expect(screen.getByDisplayValue('Description 1')).toBeInTheDocument();
+    expect(screen.getByText('Message 1')).toBeInTheDocument();
+    expect(screen.getByText('Description 1')).toBeInTheDocument();
   });
 
   // Input new details for the message
-  fireEvent.change(screen.getByDisplayValue('Message 1'), { target: { value: 'Updated Message' } });
-  fireEvent.change(screen.getByDisplayValue('Description 1'), { target: { value: 'Updated Description' } });
+  fireEvent.change(screen.getByText('Message 1'), { target: { value: 'Updated Message' } });
+  fireEvent.change(screen.getByText('Description 1'), { target: { value: 'Updated Description' } });
 
   // Click edit button
   fireEvent.click(screen.getByText('Изменить'));
