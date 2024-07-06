@@ -1,38 +1,70 @@
-.App {
+body{
+  background-color: black;
+}
+.app-block {
+  gap: 5px;
+}
+.app-wrapper {
+  display: flex;
+  margin-top: 5%;
+  justify-content: center;
+}
+
+.message-button{
+  border-radius: 100%;
   text-align: center;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.message-button.delete{
+  background-color: darkred;
+}
+.message-button.edit{
+  background-color: #00ff7c;
+}
+.button-wrapper {
+  display: flex;
+  gap: 10px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.lable-wrapper {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 25px;
+  background-color: #00ff7c;
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  align-items: center;
+  justify-content: space-around;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.message-wrapper{
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: #00ff7c 2px solid;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.messages-block {
+  background-color: aliceblue;
+  height: 612px;
+  width: 612px;
+  border-radius: 10px;
+}
+
+.description-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.input-border {
+  margin-top: 5px;
+  border: #00ff7c 2px solid;
+  width: 612px;
+  border-radius: 10px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.input-border.description {
+  height: 100px;
 }
