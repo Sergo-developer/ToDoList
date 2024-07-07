@@ -22,7 +22,7 @@ test('renders messages', async () => {
   render(<App />);
 
   // Verify that the messages are rendered
-  await waitFor(() => expect(screen.getByText('Message 1')).toBeInTheDocument());
+  await screen.findByText('Message 1');
   expect(screen.getByText('Description 1')).toBeInTheDocument();
   expect(screen.getByText('Message 2')).toBeInTheDocument();
   expect(screen.getByText('Description 2')).toBeInTheDocument();
@@ -48,18 +48,21 @@ test('edits an existing message', async () => {
   render(<App />);
 
   // Wait for messages to load and then edit the first message
-  await waitFor(() => expect(screen.getByText('Message 1')).toBeInTheDocument());
-  fireEvent.click(screen.getAllByText('')[0]); // Click edit button
+  await screen.findByText('Message 1');
+  fireEvent.click(screen.getAllByText('E')[0]); // Click edit button
 
   // Ensure inputs are updated with the selected message details
   await waitFor(() => {
-    expect(screen.getByText('Message 1')).toBeInTheDocument();
-    expect(screen.getByText('Description 1')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('Message 1')).toBeInTheDocument();
   });
 
+  await waitFor(() => {
+    expect(screen.getByDisplayValue('Description 1')).toBeInTheDocument();
+  })
+
   // Input new details for the message
-  fireEvent.change(screen.getByText('Message 1'), { target: { value: 'Updated Message' } });
-  fireEvent.change(screen.getByText('Description 1'), { target: { value: 'Updated Description' } });
+  fireEvent.change(screen.getByDisplayValue('Message 1'), { target: { value: 'Updated Message' } });
+  fireEvent.change(screen.getByDisplayValue('Description 1'), { target: { value: 'Updated Description' } });
 
   // Click edit button
   fireEvent.click(screen.getByText('Изменить'));
@@ -75,7 +78,7 @@ test('deletes a message', async () => {
   render(<App />);
 
   // Wait for messages to load and then delete the first message
-  await waitFor(() => expect(screen.getByText('Message 1')).toBeInTheDocument());
+  await screen.findByText('Message 1');
   fireEvent.click(screen.getAllByText('X')[0]);
 
   // Verify that deleteMessage was called

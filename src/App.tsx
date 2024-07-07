@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {createMessage, deleteMessage, editMessage, getMessages} from "./api";
 
@@ -74,7 +73,7 @@ function App() {
                                 <div>{el.description}</div>
                                 <div className="button-wrapper">
                                     <div onClick={() => choseMessageToEdit(el)}
-                                         className="message-button edit"></div>
+                                         className="message-button edit">E</div>
                                     <div onClick={() => sendDeleteMessage(el._id)}
                                          className="message-button delete">X
                                     </div>
