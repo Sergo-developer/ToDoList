@@ -1,10 +1,18 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import App from './App';
-import { createMessage, deleteMessage, editMessage, getMessages } from './api';
+import * as api from './api';
+// import { createMessage, deleteMessage, editMessage, getMessages } from './api';
 
 // Mock API functions
-jest.mock('./api');
+jest.mock('./api', () => ({
+  getMessages: jest.fn(),
+  createMessage: jest.fn(),
+  deleteMessage: jest.fn(),
+  editMessage: jest.fn(),
+}));
+
+const { getMessages, createMessage, deleteMessage, editMessage } = api as jest.Mocked<typeof api>;
 
 const mockMessages = [
   { _id: '1', name: 'Message 1', description: 'Description 1' },
